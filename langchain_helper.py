@@ -16,7 +16,7 @@ from langchain.chains.question_answering import load_qa_chain
 load_dotenv()
 
 
-llm = ChatOpenAI(model_name="gpt-4", api_key=api_key=st.secrets["api_key"], temperature=0.4 )
+llm = ChatOpenAI(model_name="gpt-4", api_key=st.secrets["api_key"], temperature=0.4 )
 
 
 
