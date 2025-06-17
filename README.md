@@ -59,7 +59,7 @@ And it will suggest career paths such as:
 
 **Abhishek Jha**  
 *ML Enthusiast | Streamlit Developer*  
-[GitHub](https://github.com/your-username) • [LinkedIn](https://linkedin.com/in/your-profile)
+[GitHub](https://github.com/abhijha8287) • [LinkedIn](https://linkedin.com/in/abhishekjha15)
 
 ---
 
