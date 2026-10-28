@@ -9,7 +9,7 @@ Practice with retrieval-augmented generation (RAG): grounding an LLM's answers i
 - Loads `data.csv` (career questions and answers) and embeds it with BGE embeddings
 - Stores the vectors in a local FAISS index ("Create Knowledgebase" button)
 - Retrieves the closest entries for a question and answers with GPT-4 through a `RetrievalQA` chain
-- Tells the user when the dataset does not cover the question
+- Falls back to general knowledge when the data has no match, and declines questions unrelated to careers
 
 ## Project structure
 ```
