@@ -1,69 +1,45 @@
-# 🧭 Career Guidance Chatbot
+# Career Chatbot
 
-Welcome to the **Career Chatbot** — a smart assistant that helps you discover career paths based on your interests, skills, and preferences. Whether you're a student exploring options or a professional looking to switch domains, this chatbot is designed to guide you toward the right direction.
+A Streamlit chatbot that answers career-guidance questions from a curated question-and-answer dataset.
 
-👉 **Live Demo**: [Career Chatbot by Abhishek](https://careerchatbotbyabhishek.streamlit.app/)
+## Why this exists
+Practice with retrieval-augmented generation (RAG): grounding an LLM's answers in a small, known dataset instead of its general knowledge.
 
-> ⚠️ **Note**: If the link appears inactive or shows "app is asleep," please click **“Wake it up”** and wait a few seconds. Streamlit puts inactive apps to sleep automatically.
+## What it does
+- Loads `data.csv` (career questions and answers) and embeds it with BGE embeddings
+- Stores the vectors in a local FAISS index ("Create Knowledgebase" button)
+- Retrieves the closest entries for a question and answers with GPT-4 through a `RetrievalQA` chain
+- Tells the user when the dataset does not cover the question
 
----
+## Project structure
+```
+careerchatbot/
+├── .devcontainer/       Dev container for Codespaces
+├── faiss_index/         Saved FAISS vector index
+├── data.csv             Career Q&A source data
+├── langchain_helper.py  Index building and QA chain
+├── main.py              Streamlit app
+└── requirements.txt     Python dependencies
+```
 
-## 🤖 What Does It Do?
+## Getting started
+Requirements: Python 3.10+, an OpenAI API key.
+```bash
+git clone https://github.com/abhijha8287/careerchatbot.git
+cd careerchatbot
+pip install -r requirements.txt
+mkdir -p .streamlit && echo 'api_key = "sk-..."' > .streamlit/secrets.toml
+streamlit run main.py
+```
+Click "Create Knowledgebase" once to rebuild the index, then ask a question.
 
-Just tell the chatbot your interest areas like:
-- “I enjoy coding and building things.”
-- “I love biology and chemistry.”
-- “I want to work with people and help solve their problems.”
+## Configuration
+| Variable | Purpose |
+|:--|:--|
+| `api_key` in `.streamlit/secrets.toml` | OpenAI API key |
 
-And it will suggest career paths such as:
-- Software Engineer
-- Biotech Researcher
-- Psychologist
-- UX Designer
-- Data Scientist
-...and many more!
+## Tech stack
+Python, LangChain, OpenAI GPT-4, HuggingFace BGE embeddings, FAISS, Streamlit
 
----
-
-## 🎯 Use Cases
-
-- 🧑‍🎓 **Students** deciding on a major or stream
-- 🎓 **Graduates** unsure of what to pursue next
-- 👩‍💼 **Professionals** looking to switch careers
-- 🎯 **Anyone** seeking guidance based on their passion and interest
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend & Hosting**: [Streamlit](https://streamlit.io/)
-- **Backend**: Python + LLM (OpenAI or custom model)
-- **Prompt Engineering**: Guides conversation to stay relevant and personalized
-- **Deployment**: Streamlit Community Cloud
-
----
-
-## 🚀 How to Use
-
-1. Go to 👉 [https://careerchatbotbyabhishek.streamlit.app](https://careerchatbotbyabhishek.streamlit.app)
-2. If you see a message saying _“This app is asleep”_, click **“Wake App”** or **refresh** after a few seconds.
-3. Type your interest area in the chatbot window.
-4. Get suggested career paths and some explanation for each.
-5. Follow-up with more specific questions if needed!
-
----
-
-
-
-## 🙋‍♂️ Author
-
-**Abhishek Jha**  
-*ML Enthusiast | Streamlit Developer*  
-[GitHub](https://github.com/abhijha8287) • [LinkedIn](https://linkedin.com/in/abhishekjha15)
-
----
-
-## 📜 License
-
-This project is open for educational use. Feel free to fork and customize for your own chatbot!
-
+## Notes
+Live demo: https://careerchatbotbyabhishek.streamlit.app (on the free Streamlit tier it may take a few seconds to wake up).
